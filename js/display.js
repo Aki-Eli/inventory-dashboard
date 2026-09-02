@@ -25,7 +25,7 @@ export function displayProducts(products) {
     const totalcount = calculateTotalInventoryValue(products);
 
     products.forEach(product => {
-        const { name, category, price, stock } = product;
+        const { id, name, category, price, stock } = product;
         const status = getStockStatus(stock);
 
         html += `
@@ -40,7 +40,7 @@ export function displayProducts(products) {
     });
 
     container.innerHTML = html;
-    total.textContent = `Total Inventory Value: ₱${totalcount.toLocaleString('en-PH', { minimumFractionDigits: 2 })}`;
+    total.textContent = `Total Inventory Value: ₱${totalcount.toLocaleString()}`;
     low.textContent = `Low Stock Products: ${lowcount}`;
     out.textContent = `Out of Stock Products: ${outcount}`;
 }

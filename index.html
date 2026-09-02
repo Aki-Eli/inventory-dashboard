@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inventory Dashboard</title>
     <link rel="stylesheet" href="./css/style.css">
-    <script type="module" src="./js/main.js"></script>
 </head>
 <body>
     <h1>Product Inventory Dashboard</h1>
@@ -21,16 +20,14 @@
         <button id="searchBtn">Search</button>
         <button id="resetBtn">Reset</button>
     </div>
-    <div id="resultBox" style="display: none;">
-    <div id="productList">
-
+    <div id="resultBox">
+        <div id="productList"></div>
+        <p id="totalInventoryValue">Total: </p>
+        <p id="lowStockCount">Low Stock: </p>
+        <p id="outOfStockCount">Out of Stock: </p>
     </div>
-    <p id="totalInventoryValue">Total: </p>
-    <p id="lowStockCount">Low Stock: </p>
-    <p id="outOfStockCount">Out of Stock:  </p>
-    </div>
-    
-
     <h2 id="noResultsMessage" style="display: none;">No products found</h2>
+
+    <script type="module" src="./js/main.js"></script>
 </body>
 </html>
