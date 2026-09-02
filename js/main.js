@@ -1,27 +1,43 @@
-import { products } from "./products.js";
-import { displayProducts } from "./display.js";
-import { searchProducts, filterProductsByCategory } from "./inventoryUtils.js";
+import { products } from './products.js';
+import { displayProducts } from './display.js';
+import { searchProducts, filterProductsByCategory } from './inventoryUtils.js';
 
-const search = document.querySelector('#searchInput');
-const filter = document.querySelector('#categoryFilter');
-const searchBtn = document.querySelector('#searchBtn');
-const resetBtn = document.querySelector('#resetBtn');
+// DOM element references
+const searchInput    = document.querySelector('#searchInput');
+const categoryFilter = document.querySelector('#categoryFilter');
+const searchBtn      = document.querySelector('#searchBtn');
+const resetBtn       = document.querySelector('#resetBtn');
 
+// Display all products on initial page load
 displayProducts(products);
 
-function searchButton() {
-    const query = search.value;
-    const category = filter.value;
+/**
+ * Searches and filters products based on the current input values,
+ * then updates the display.
+ */
+function handleSearch() {
+    const query    = searchInput.value;
+    const category = categoryFilter.value;
+
     let results = searchProducts(products, query);
     results = filterProductsByCategory(results, category);
+
     displayProducts(results);
 }
 
-function resetButton() {
-    search.value = "";
-    filter.value = "All";
+/**
+ * Resets the search input and category filter,
+ * then restores the full product list.
+ */
+function handleReset() {
+    searchInput.value    = '';
+    categoryFilter.value = 'All';
     displayProducts(products);
 }
 
-searchBtn.addEventListener("click", searchButton);
-resetBtn.addEventListener("click", resetButton);
+// Event listeners
+searchBtn.addEventListener('click', handleSearch);
+resetBtn.addEventListener('click', handleReset);
+searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') handleSearch();
+});

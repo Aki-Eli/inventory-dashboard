@@ -1,3 +1,6 @@
+/* =====================
+   Reset & Base
+   ===================== */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +20,9 @@ h1 {
     color: #2c3e50;
 }
 
-/* --- Search Bar --- */
+/* =====================
+   Search Bar
+   ===================== */
 .search-bar {
     display: flex;
     gap: 10px;
@@ -33,7 +38,7 @@ h1 {
     font-size: 0.95rem;
     width: 220px;
     outline: none;
-    transition: border 0.2s;
+    transition: border-color 0.2s;
 }
 
 #searchInput:focus {
@@ -45,18 +50,21 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 0.95rem;
-    background: white;
+    background-color: white;
     outline: none;
     cursor: pointer;
 }
 
+/* =====================
+   Buttons
+   ===================== */
 button {
     padding: 8px 18px;
     border: none;
     border-radius: 6px;
     font-size: 0.95rem;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background-color 0.2s;
 }
 
 #searchBtn {
@@ -77,7 +85,9 @@ button {
     background-color: #c8c8c8;
 }
 
-/* --- Product Cards --- */
+/* =====================
+   Product List Grid
+   ===================== */
 #productList {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -85,8 +95,11 @@ button {
     margin-bottom: 20px;
 }
 
-.productCard {
-    background: white;
+/* =====================
+   Product Card
+   ===================== */
+.product-card {
+    background-color: white;
     border-radius: 10px;
     padding: 16px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -96,30 +109,53 @@ button {
     transition: transform 0.15s;
 }
 
-.productCard:hover {
+.product-card:hover {
     transform: translateY(-3px);
 }
 
-.productCard p:first-child {
+.card-name {
     font-weight: 600;
     font-size: 1rem;
     color: #2c3e50;
 }
 
-.productCard p {
+.card-category,
+.card-price,
+.card-stock {
     font-size: 0.88rem;
     color: #555;
 }
 
-/* --- Summary Stats --- */
-#resultBox > p {
+.card-status {
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 3px 8px;
+    border-radius: 4px;
+    display: inline-block;
+    width: fit-content;
+}
+
+/* Stock status badge colors */
+.product-card:has(.card-status) .card-status {
+    background-color: #e8f5e9;
+    color: #2e7d32;
+}
+
+/* =====================
+   Summary Statistics
+   ===================== */
+#totalInventoryValue,
+#lowStockCount,
+#outOfStockCount {
     font-size: 0.92rem;
     color: #444;
     margin-top: 6px;
 }
 
-/* --- No Results --- */
-#NoResultsMessage {
+/* =====================
+   No Results Message
+   ===================== */
+#noResultsMessage {
     color: #999;
     font-size: 1.1rem;
     margin-top: 30px;

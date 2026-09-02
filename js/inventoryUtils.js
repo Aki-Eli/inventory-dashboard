@@ -1,30 +1,55 @@
-export function searchProducts(products, query){
+/**
+ * Searches products by name (case-insensitive).
+ * Returns all products if query is empty.
+ */
+export function searchProducts(products, query) {
     if (!query || query.trim() === '') return products;
-    const result = products.filter(product => product.name.toLowerCase().includes(query.toLowerCase()));
-    return result;
+    return products.filter(product =>
+        product.name.toLowerCase().includes(query.toLowerCase())
+    );
 }
 
-export function filterProductsByCategory(products, category){
+/**
+ * Filters products by category.
+ * Returns all products if category is 'All' or empty.
+ */
+export function filterProductsByCategory(products, category) {
     if (!category || category.trim() === 'All') return products;
-    const result = products.filter(product => product.category.toLowerCase().includes(category.toLowerCase()));
-    return result;
+    return products.filter(product =>
+        product.category.toLowerCase() === category.toLowerCase()
+    );
 }
 
-export function getStockStatus(stock){
-    if (stock === 0) return "Out of Stock";
-    if (stock >= 1 && stock <= 5) return "Low Stock";
-    return "In Stock";
+/**
+ * Returns a stock status label based on the stock quantity.
+ * 0        → "Out of Stock"
+ * 1–5      → "Low Stock"
+ * 6+       → "In Stock"
+ */
+export function getStockStatus(stock) {
+    if (stock === 0) return 'Out of Stock';
+    if (stock >= 1 && stock <= 5) return 'Low Stock';
+    return 'In Stock';
 }
 
-export function calculateTotalInventoryValue(products){
-    const totalValue = products.reduce((sum, product) => sum + (product.price * product.stock), 0);
-    return totalValue;
+/**
+ * Calculates the total inventory value (price × stock) for all products.
+ * Returns a raw numeric value.
+ */
+export function calculateTotalInventoryValue(products) {
+    return products.reduce((sum, product) => sum + (product.price * product.stock), 0);
 }
 
-export function countLowStockProducts(products){
+/**
+ * Returns the number of products with stock between 1 and 5 (inclusive).
+ */
+export function countLowStockProducts(products) {
     return products.filter(product => product.stock >= 1 && product.stock <= 5).length;
 }
 
-export function countOutOfStockProducts(products){
+/**
+ * Returns the number of products with stock equal to 0.
+ */
+export function countOutOfStockProducts(products) {
     return products.filter(product => product.stock === 0).length;
 }
