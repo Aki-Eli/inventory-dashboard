@@ -11,7 +11,9 @@ export function filterProductsByCategory(products, category){
 }
 
 export function getStockStatus(stock){
-    return stock.length;
+    if (stock === 0) return "Out of Stock";
+    if (stock >= 1 && stock <= 5) return "Low Stock";
+    return "In Stock";
 }
 
 export function calculateTotalInventoryValue(products){
@@ -19,13 +21,10 @@ export function calculateTotalInventoryValue(products){
     return totalValue;
 }
 
-
 export function countLowStockProducts(products){
-    const lowStock = products.filter(product => product.stock >= 1 && product.stock <= 5);
-    return lowStock;
+    return products.filter(product => product.stock >= 1 && product.stock <= 5).length;
 }
 
 export function countOutOfStockProducts(products){
-    const noStock = products.filter(product => product.stock == 0);
-    return noStock;
+    return products.filter(product => product.stock === 0).length;
 }
